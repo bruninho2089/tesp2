@@ -16,7 +16,9 @@ public class AloMundo {
 		Aluno a4 = new Aluno(7193L,"Natã");
 		Professor p1 = new Professor ("Tite","123456789", new BigDecimal(123456));
 		Professor p2 = new Professor("Cuca", "11058974125");
-	
+
+		System.out.println("BONUS ==== "+Professor.BONUS);
+		System.out.println(Aluno.verificaMatricula("123123123"));
 		
 		System.out.println(a1);
 		System.out.println(a2);

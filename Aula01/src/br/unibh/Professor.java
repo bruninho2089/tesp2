@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class Professor extends Pessoa{
 
 	private BigDecimal salario;
-
+	public static double BONUS = 0.10;
 
 	public BigDecimal getSalario() {
 		return salario;
