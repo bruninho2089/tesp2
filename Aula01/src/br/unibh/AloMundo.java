@@ -1,11 +1,13 @@
 package br.unibh;
 
-
 import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 import br.unibh.entidades.Aluno;
 import br.unibh.entidades.Professor;
+import br.unibh.persistencias.JDBCUtil;
 
 public class AloMundo {
 
@@ -30,16 +32,19 @@ public class AloMundo {
 		System.out.println(p1);
 		System.out.println(p2);
 		
-		
-		/*int i =0;
-		
-		while (i < 10) {
-		
-		System.out.println(i+1+ " Alo Mundo.");
-		i++;
-		
-			}*/
-		
-		
+		try {
+			ResultSet res = JDBCUtil.getConnection().prepareStatement("select * from tb_aluno").executeQuery();
+			
+			while (res.next()){
+			System.out.println(res.getLong("id")+"\t"+res.getString("nome"));
+			}
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			}
 	}
-}
