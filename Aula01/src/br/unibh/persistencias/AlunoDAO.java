@@ -81,8 +81,7 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 		try {
 			PreparedStatement p = JDBCUtil.getConnection().prepareStatement(
 					"update tb_aluno set matricula = ?, nome = ?, "
-							+ " data_aniversario = ? "
-							+ "where id = ?");
+							+ " data_aniversario = ? " + "where id = ?");
 			p.setLong(1, t.getMatricula());
 			p.setString(2, t.getNome());
 			if (t.getDataAniversario() == null) {
@@ -111,9 +110,7 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}	
-		
-	
+	}
 
 	@Override
 	public List<Aluno> findAll() {
@@ -123,10 +120,10 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 					"select * from tb_aluno");
 			ResultSet r = p.executeQuery();
 			while (r.next()) {
-				lista.add(new Aluno(r.getLong("id"), r.getLong("matricula"),
-						r.getString("nome"), r.getString("cpf"),
-						r.getString("data_aniversario") == null ? null : df
-								.parse(r.getString("data_aniversario"))));
+				lista.add(new Aluno(r.getLong("id"), r.getLong("matricula"), r
+						.getString("nome"), r.getString("cpf"), r
+						.getString("data_aniversario") == null ? null : df
+						.parse(r.getString("data_aniversario"))));
 			}
 			JDBCUtil.closeConnection();
 		} catch (Exception e) {
@@ -134,7 +131,7 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 			e.printStackTrace();
 		}
 		return lista;
-			
+
 	}
 
 	public void clean() {
